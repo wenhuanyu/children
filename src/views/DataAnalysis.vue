@@ -158,7 +158,7 @@
                     <img src="../assets/images/xiazai1.png" alt="">
                     下载
                 </a>
-                <a class="report" :href="'http://shenxin.shoupinkangda.com/api/Analysis/index_list?type=1&exam_id='
+                <a class="report" :href="'https://ertong.shoupinkangda.com/api/Analysis/index_list?type=1&exam_id='
                 +multipleSelection+'&hospital_id='
                 +formData.hospital_id +'&sta='+form.sta"
                    style="color: #FFFFFF" v-else>

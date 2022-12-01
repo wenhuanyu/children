@@ -128,21 +128,21 @@
                              style="display: flex;justify-content: center;flex-direction:column;align-items: center;padding-left: 0;padding-right: 0;">
                             <div class="table_title">注意力得分统计</div>
                             <div class="charts-wrap">
-                                <div id="myChart_heart" :style="{width: '730px', height: '400px'}"></div>
+                                <div id="myChart_heart" :style="{width: '900px', height: '400px'}"></div>
                             </div>
                         </div>
                         <div class="print-row" v-if="showBar=printData[0].value"
                              style="display: flex;justify-content: center;flex-direction:column;align-items: center;padding-left: 0;padding-right: 0;">
                             <div class="table_title">放松度统计</div>
                             <div class="charts-wrap">
-                                <div id="myChart_heart1" :style="{width: '730px', height: '400px'}"></div>
+                                <div id="myChart_heart1" :style="{width: '900px', height: '400px'}"></div>
                             </div>
                         </div>
                         <div class="print-row" v-if="showBar=printData[0].value"
                              style="display: flex;justify-content: center;flex-direction:column;align-items: center;padding-left: 0;padding-right: 0;">
                             <div class="table_title">皮温得分统计</div>
                             <div class="charts-wrap">
-                                <div id="myChart_heart2" :style="{width: '730px', height: '400px'}"></div>
+                                <div id="myChart_heart2" :style="{width: '900px', height: '400px'}"></div>
                             </div>
                         </div>
                     </div>
@@ -611,13 +611,13 @@ export default {
                     data: lables,
                     axisLabel: {
                         textStyle: {
-                            fontWeight: 500,
+                            fontWeight: 1000,
                             color: '#000000',
-                            fontSize: 10
+                            fontSize: 16
                         },
                         margin:15,
                         interval: 0,//坐标轴刻度标签的显示间隔(在类目轴中有效) 0:显示所有  1：隔一个显示一个 :3：隔三个显示一个...
-                        rotate: -45, //标签倾斜的角度，显示不全时可以通过旋转防止标签重叠（-90到90）
+                        rotate: -15, //标签倾斜的角度，显示不全时可以通过旋转防止标签重叠（-90到90）
                         formatter:function(params) {
                             var newParamsName = ""; // 最终拼接成的字符串
                             var paramsNameNumber = params.length; // 实际标签的个数
@@ -672,14 +672,13 @@ export default {
                             show: true,
                             position: 'inside',
                             textStyle: {
-                                fontWeight: 500,
+                                fontWeight: 1000,
                                 color: '#ffffff',
-                                fontSize: 12
+                                fontSize: 14
                             },
                             formatter:function(v){
-                                console.log('v',v)
                                 for(i = 0;i<ids.length;i++) {
-                                    if(v.value == ids[i].b) {
+                                    if(v.value == ids[i].b && v.dataIndex == i) {
                                         return ids[i].a.split("").join("\n");
                                     }
                                 }
@@ -704,10 +703,13 @@ export default {
                             show: true,
                             position: 'top',
                             rotate: 45,
+                            textStyle: {
+                                fontWeight: 1000,
+                                fontSize: 15
+                            },
                             formatter:function(v){
-                                console.log('v',v)
                                 for(i = 0;i<bbb.length;i++) {
-                                    if(v.value == bbb[i].b) {
+                                    if(v.value == bbb[i].b && v.dataIndex == i) {
                                         return bbb[i].a;
                                     }
                                 }
@@ -749,13 +751,13 @@ export default {
                     data: lables,
                     axisLabel: {
                         textStyle: {
-                            fontWeight: 500,
+                            fontWeight: 1000,
                             color: '#000000',
-                            fontSize: 10
+                            fontSize: 16
                         },
                         margin:15,
                         interval: 0,//坐标轴刻度标签的显示间隔(在类目轴中有效) 0:显示所有  1：隔一个显示一个 :3：隔三个显示一个...
-                        rotate: -45, //标签倾斜的角度，显示不全时可以通过旋转防止标签重叠（-90到90）
+                        rotate: -15, //标签倾斜的角度，显示不全时可以通过旋转防止标签重叠（-90到90）
                         formatter:function(params) {
                             var newParamsName = ""; // 最终拼接成的字符串
                             var paramsNameNumber = params.length; // 实际标签的个数
@@ -810,14 +812,13 @@ export default {
                             show: true,
                             position: 'inside',
                             textStyle: {
-                                fontWeight: 500,
+                                fontWeight: 1000,
                                 color: '#ffffff',
-                                fontSize: 12
+                                fontSize: 14
                             },
                             formatter:function(v){
-                                console.log('v',v)
                                 for(i = 0;i<ids.length;i++) {
-                                    if(v.value == ids[i].b) {
+                                    if(v.value == ids[i].b && v.dataIndex == i) {
                                         return ids[i].a.split("").join("\n");
                                     }
                                 }
@@ -842,10 +843,13 @@ export default {
                             show: true,
                             position: 'top',
                             rotate: 45,
+                            textStyle: {
+                                fontWeight: 1000,
+                                fontSize: 15
+                            },
                             formatter:function(v){
-                                console.log('v',v)
                                 for(i = 0;i<bbb.length;i++) {
-                                    if(v.value == bbb[i].b) {
+                                    if(v.value == bbb[i].b && v.dataIndex == i) {
                                         return bbb[i].a;
                                     }
                                 }
@@ -887,13 +891,13 @@ export default {
                     data: lables,
                     axisLabel: {
                         textStyle: {
-                            fontWeight: 500,
+                            fontWeight: 1000,
                             color: '#000000',
-                            fontSize: 10
+                            fontSize: 16
                         },
                         margin:15,
                         interval: 0,//坐标轴刻度标签的显示间隔(在类目轴中有效) 0:显示所有  1：隔一个显示一个 :3：隔三个显示一个...
-                        rotate: -45, //标签倾斜的角度，显示不全时可以通过旋转防止标签重叠（-90到90）
+                        rotate: -15, //标签倾斜的角度，显示不全时可以通过旋转防止标签重叠（-90到90）
                         formatter:function(params) {
                             var newParamsName = ""; // 最终拼接成的字符串
                             var paramsNameNumber = params.length; // 实际标签的个数
@@ -948,14 +952,13 @@ export default {
                             show: true,
                             position: 'inside',
                             textStyle: {
-                                fontWeight: 500,
+                                fontWeight: 1000,
                                 color: '#ffffff',
-                                fontSize: 12
+                                fontSize: 14
                             },
                             formatter:function(v){
-                                console.log('v',v)
                                 for(i = 0;i<ids.length;i++) {
-                                    if(v.value == ids[i].b) {
+                                    if(v.value == ids[i].b && v.dataIndex == i) {
                                         return ids[i].a.split("").join("\n");
                                     }
                                 }
@@ -980,10 +983,13 @@ export default {
                             show: true,
                             position: 'top',
                             rotate: 45,
+                            textStyle: {
+                                fontWeight: 1000,
+                                fontSize: 15
+                            },
                             formatter:function(v){
-                                console.log('v',v)
                                 for(i = 0;i<bbb.length;i++) {
-                                    if(v.value == bbb[i].b) {
+                                    if(v.value == bbb[i].b && v.dataIndex == i) {
                                         return bbb[i].a;
                                     }
                                 }
