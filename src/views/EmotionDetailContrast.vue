@@ -47,8 +47,8 @@
                                 <p>{{form.patient_info.medical_num}}</p>
                             </div>
                             <div class="row">
-                                <span>入院时间</span>
-                                <p>{{form.patient_info.in_time}}</p>
+                                <span>首次训练</span>
+                                <p>{{form.patient_info.first}}</p>
                             </div>
                         </div>
                         <div class="first-group">
@@ -61,8 +61,8 @@
                                 <p>{{form.patient_info.medical_insurance_num}}</p>
                             </div>
                             <div class="row">
-                                <span>训练时间</span>
-                                <p>{{form.patient_info.exam_time}}</p>
+                                <span>最后训练</span>
+                                <p>{{form.patient_info.last}}</p>
                             </div>
                         </div>
                         <div class="first-group">
@@ -75,54 +75,54 @@
                                 <p>{{form.patient_info.district_id_text}}</p>
                             </div>
                             <div class="row">
-                                <span>完成时间</span>
-                                <p>{{form.patient_info.complete_time}}</p>
+                                <span>训练次数</span>
+                                <p>{{form.patient_info.frequency}}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="flex" style="border-bottom: 1px solid #e6e6e6; padding: 10px 25px;">
-                        <div style="width: 50%;border-right: 1px solid #e6e6e6; padding-left: 25px;">
-                            <div>
-                                <span class="sc1">生产史&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;胎次</span>
-                                <span class="sc2">{{ form.patient_info && form.patient_info.taici }}</span>
-                                <span class="sc1" style="padding-left: 30px;">产次</span>
-                                <span class="sc2">{{ form.patient_info && form.patient_info.chanci }}</span>
-                                <span class="sc2" style="padding-left: 25px;">（{{ form.patient_info && form.patient_info.scs_radio_text }}）</span>
-                            </div>
-                            <div>
-                                <span class="sc1">出生体重</span>
-                                <span class="sc2">{{ form.patient_info && form.patient_info.birth_weight }}kg</span>
-                            </div>
-                            <div>
-                                <span class="sc1">现在&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;身长</span>
-                                <span class="sc2">{{ form.patient_info && form.patient_info.now_height }}cm</span>
-                                <span class="sc1" style="padding-left: 30px;">体重</span>
-                                <span class="sc2">{{ form.patient_info && form.patient_info.now_weight }}kg</span>
-                                <span class="sc1" style="padding-left: 25px;">头围</span>
-                                <span class="sc2">{{ form.patient_info && form.patient_info.now_head }}cm</span>
-                            </div>
-                        </div>
-                        <div style="width: 50%;padding-left: 45px;">
-                            <div>
-                                <span class="sc1">窒息</span>
-                                <span class="sc2">（{{ form.patient_info && form.patient_info.zhixi_text }}）</span>
-                                <span class="sc1" style="padding-left: 15px;">持续时间</span>
-                                <span class="sc2">{{ form.patient_info && form.patient_info.zhixi_time }}分钟</span>
-                            </div>
-                            <div>
-                                <span class="sc1">畸形</span>
-                                <span class="sc2">{{ form.patient_info && form.patient_info.malformation }}</span>
-                            </div>
-                            <div>
-                                <span class="sc1">有无抽风</span>
-                                <span class="sc2" style="padding-left: 5px;">（{{ form.patient_info && form.patient_info.choufeng }}抽风）</span>
-                                <span class="sc1" style="padding-left: 10px;">有无卤门</span>
-                                <span class="sc2" style="padding-left: 5px;">（{{ form.patient_info && form.patient_info.lumen }}卤门）</span>
-                                <span class="sc1" style="padding-left: 10px;">有无黄疸</span>
-                                <span class="sc2" style="padding-left: 5px;">（{{ form.patient_info && form.patient_info.huangdan }}黄疸）</span>
-                            </div>
-                        </div>
-                    </div>
+<!--                    <div class="flex" style="border-bottom: 1px solid #e6e6e6; padding: 10px 25px;">-->
+<!--                        <div style="width: 50%;border-right: 1px solid #e6e6e6; padding-left: 25px;">-->
+<!--                            <div>-->
+<!--                                <span class="sc1">生产史&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;胎次</span>-->
+<!--                                <span class="sc2">{{ form.patient_info && form.patient_info.taici }}</span>-->
+<!--                                <span class="sc1" style="padding-left: 30px;">产次</span>-->
+<!--                                <span class="sc2">{{ form.patient_info && form.patient_info.chanci }}</span>-->
+<!--                                <span class="sc2" style="padding-left: 25px;">（{{ form.patient_info && form.patient_info.scs_radio_text }}）</span>-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                <span class="sc1">出生体重</span>-->
+<!--                                <span class="sc2">{{ form.patient_info && form.patient_info.birth_weight }}kg</span>-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                <span class="sc1">现在&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;身长</span>-->
+<!--                                <span class="sc2">{{ form.patient_info && form.patient_info.now_height }}cm</span>-->
+<!--                                <span class="sc1" style="padding-left: 30px;">体重</span>-->
+<!--                                <span class="sc2">{{ form.patient_info && form.patient_info.now_weight }}kg</span>-->
+<!--                                <span class="sc1" style="padding-left: 25px;">头围</span>-->
+<!--                                <span class="sc2">{{ form.patient_info && form.patient_info.now_head }}cm</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div style="width: 50%;padding-left: 45px;">-->
+<!--                            <div>-->
+<!--                                <span class="sc1">窒息</span>-->
+<!--                                <span class="sc2">（{{ form.patient_info && form.patient_info.zhixi_text }}）</span>-->
+<!--                                <span class="sc1" style="padding-left: 15px;">持续时间</span>-->
+<!--                                <span class="sc2">{{ form.patient_info && form.patient_info.zhixi_time }}分钟</span>-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                <span class="sc1">畸形</span>-->
+<!--                                <span class="sc2">{{ form.patient_info && form.patient_info.malformation }}</span>-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                <span class="sc1">有无抽风</span>-->
+<!--                                <span class="sc2" style="padding-left: 5px;">（{{ form.patient_info && form.patient_info.choufeng }}抽风）</span>-->
+<!--                                <span class="sc1" style="padding-left: 10px;">有无卤门</span>-->
+<!--                                <span class="sc2" style="padding-left: 5px;">（{{ form.patient_info && form.patient_info.lumen }}卤门）</span>-->
+<!--                                <span class="sc1" style="padding-left: 10px;">有无黄疸</span>-->
+<!--                                <span class="sc2" style="padding-left: 5px;">（{{ form.patient_info && form.patient_info.huangdan }}黄疸）</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
                     <div>
                         <div class="print-row" v-if="showBar=printData[0].value"
                              style="display: flex;justify-content: center;flex-direction:column;align-items: center;padding-left: 0;padding-right: 0;">

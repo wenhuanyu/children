@@ -36,7 +36,7 @@ app.on('ready', function () {
     // 加载应用的 index
     // mainWindow.loadURL("http://etqd.shoupinkangda.com/#/TermMonitor")
     // mainWindow.loadURL("http://etqd.shoupinkangda.com/#/Login")
-    mainWindow.loadURL("http://localhost:8080/#/TerminalLogin")
+    mainWindow.loadURL("http://localhost:8080/#/Login")
     // mainWindow.loadURL("http://192.168.8.189:90/#/Login")
     // mainWindow.loadURL("http://ertong.shoupinkangda.com/h5/#/TermMonitor")
 
