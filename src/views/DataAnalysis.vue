@@ -193,13 +193,13 @@ export default {
                 {
                     name: '测评时间',
                     value: 'exam_create_at',
-                    width:'160'
+                    width:'200'
                 },
 
                 {
                     name: '患者姓名',
                     value: 'name',
-                    width:'90'
+                    width:'120'
                 },
                 {
                     name: '性别',
@@ -244,11 +244,11 @@ export default {
                     value: 'hukou',
                     width:'90'
                 },
-                {
-                    name: '手机号',
-                    value: 'phone',
-                    width:'120'
-                },
+                // {
+                //     name: '手机号',
+                //     value: 'phone',
+                //     width:'120'
+                // },
                 {
                     name: '民族',
                     value: 'nation_name',
@@ -374,13 +374,13 @@ export default {
                     {
                         name: '训练时间',
                         value: 'exam_create_at',
-                        width:'160'
+                        width:'200'
                     },
 
                     {
                         name: '患者姓名',
                         value: 'name',
-                        width:'90'
+                        width:'120'
                     },
                     {
                         name: '性别',
@@ -425,11 +425,11 @@ export default {
                         value: 'hukou',
                         width:'90'
                     },
-                    {
-                        name: '手机号',
-                        value: 'phone',
-                        width:'120'
-                    },
+                    // {
+                    //     name: '手机号',
+                    //     value: 'phone',
+                    //     width:'120'
+                    // },
                     {
                         name: '民族',
                         value: 'nation_name',
@@ -450,13 +450,13 @@ export default {
                     {
                         name: '测评时间',
                         value: 'exam_create_at',
-                        width:'160'
+                        width:'200'
                     },
 
                     {
                         name: '患者姓名',
                         value: 'name',
-                        width:'90'
+                        width:'120'
                     },
                     {
                         name: '性别',
@@ -501,11 +501,11 @@ export default {
                         value: 'hukou',
                         width:'90'
                     },
-                    {
-                        name: '手机号',
-                        value: 'phone',
-                        width:'120'
-                    },
+                    // {
+                    //     name: '手机号',
+                    //     value: 'phone',
+                    //     width:'120'
+                    // },
                     {
                         name: '民族',
                         value: 'nation_name',

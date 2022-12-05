@@ -34,9 +34,9 @@ app.on('ready', function () {
     Menu.setApplicationMenu(null)
 
     // 加载应用的 index
-    // mainWindow.loadURL("http://etqd.shoupinkangda.com/#/TermMonitor")
+    mainWindow.loadURL("http://etqd.shoupinkangda.com/#/TermMonitor")
     // mainWindow.loadURL("http://etqd.shoupinkangda.com/#/Login")
-    mainWindow.loadURL("http://localhost:8080/#/Login")
+    // mainWindow.loadURL("http://localhost:8080/#/Login")
     // mainWindow.loadURL("http://192.168.8.189:90/#/Login")
     // mainWindow.loadURL("http://ertong.shoupinkangda.com/h5/#/TermMonitor")
 
@@ -54,7 +54,7 @@ app.on('ready', function () {
 
 
     // 打开开发工具
-    mainWindow.openDevTools();
+    // mainWindow.openDevTools();
 
     // 当 window 被关闭，这个事件会被发出
     mainWindow.on('closed', function () {
