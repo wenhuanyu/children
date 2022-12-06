@@ -53,7 +53,7 @@
                                 <div class="item_" v-if="value_ids.includes(option.key)">
                                     <template>
                                         <el-select v-model="listMap[option.key]" placeholder="请选择"
-                                                   @change="onMusicChange($event)">
+                                                   @change="onMusicChange($event,option.key)">
                                             <el-option
                                                 v-for="item in musicList"
                                                 :key="item.id"
@@ -65,7 +65,7 @@
                                         </el-select>
                                         <el-input v-model.sync="timeMap[option.key]" placeholder="时间"
                                                   style="width: 60px !important; margin-left: 5px;"
-                                                  @change="onTime($event)"></el-input>
+                                                  @change="onTime($event,option.key)"></el-input>
                                     </template>
                                 </div>
                             </span>
@@ -149,9 +149,6 @@ export default {
                 ],
 
             },
-            // difficulty: [],
-            // difficulty_: [],
-            // difficulty__: [],
             difficulty_id: '',
             rightChecked: [49, 66],
             submitUrl: 'api/emotion_policy/add2',
@@ -193,61 +190,70 @@ export default {
         this.$store.dispatch('GetXiao')
         this.onPaper()
         this.getMusic()
-        // this.getDifficulty()
-        // this.getDifficulty_()
-        // this.getDifficulty__()
         this.id = this.$route.query.id;
         this.type = this.$route.query.type;
         if (this.$route.query.id) {
             this.submitUrl = 'api/emotion_policy/edit2'
             this.onDetail();
         }
-        console.log(this.$route)
         sessionStorage.setItem("detail", true);
     },
     methods: {
         log(option) {
             console.log('log', option.key)
         },
-        onTime(e) {
-            console.log(e)
+        onTime(e,i) {
             this.game_time = e
-            this.onPaper()
+            var flag = this.functiontofindIndexByKeyValue(i)
+            if(flag!==-1) {
+                this.idData[flag].game_time = e
+            } else {
+                let idData = {};
+                idData = {
+                    'game_id': i,
+                    'music_id': this.onMusicChange_id,
+                    'game_time': this.game_time,
+                }
+                this.idData.push(idData);
+            }
         },
-
-        // async getDifficulty() {
-        //     await this.$axios.post('api/common/emotion_level_lst',{type:1}).then(res => {
-        //         if (res.data.code === 1) {
-        //             this.difficulty = res.data.data;
-        //         }
-        //     })
-        // },
-        // async getDifficulty_() {
-        //     await this.$axios.post('api/common/emotion_level_lst',{type:3}).then(res => {
-        //         if (res.data.code === 1) {
-        //             this.difficulty_ = res.data.data;
-        //         }
-        //     })
-        // },
-        // async getDifficulty__() {
-        //     await this.$axios.post('api/common/emotion_level_lst',{type:4}).then(res => {
-        //         if (res.data.code === 1) {
-        //             this.difficulty__ = res.data.data;
-        //         }
-        //     })
-        // },
-        onMusicChange(e) {
-            console.log(e)
+        functiontofindIndexByKeyValue(valuetosearch) {
+            for (var i = 0; i < this.idData.length; i++) {
+                if (this.idData[i].game_id == valuetosearch) {
+                    return i;
+                }
+            }
+            return -1;
+        },
+        onMusicChange(e,i) {
             this.onMusicChange_id = e
-            this.onPaper()
+            var flag = this.functiontofindIndexByKeyValue(i)
+            if(flag!==-1) {
+                this.idData[flag].music_id = e
+            } else {
+                let idData = {};
+                idData = {
+                    'game_id': i,
+                    'music_id': e,
+                    'game_time': this.game_time,
+                }
+                this.idData.push(idData);
+            }
         },
         handleChange(value, direction, movedKeys) {
             console.log('direction', direction);
             console.log('movedKeys', movedKeys);
+            console.log('this.listMap',this.listMap)
             movedKeys.map((item) => {
-                this.listMap[item] = '';
                 if(direction === 'left'){
                     this.timeMap[item] = '';
+                    this.listMap[item] = '';
+                    delete this.timeMap.item
+                    delete this.listMap.item
+                    var flag = this.functiontofindIndexByKeyValue(item)
+                    if(flag!==-1) {
+                        this.idData.splice(flag, 1)
+                    }
 
                 }
             })
@@ -255,9 +261,7 @@ export default {
             value.map((item, index) => {
                 this.optionList.push('')
             })
-            console.log('value', value);
             this.value_ids = value
-            console.log('value_ids', this.value_ids)
         },
         backPage() {
             this.$router.go(-1);
@@ -267,22 +271,14 @@ export default {
                 if (res.data.code === 1) {
                     let list = res.data.data.all
                     const data = [];
-                    const idData = [];
 
                     for (let i = 0; i < list.length; i++) {
                         data.push({
                             key: list[i].id,
                             label: list[i].name,
                         });
-                        idData[list[i].id] = {
-                            'game_id': list[i].id,
-                            'music_id': this.onMusicChange_id,
-                            'game_time': this.game_time,
-                        }
-                        this.difficulty_id = list[i].id
                     }
                     this.data = data;
-                    this.idData = idData;
 
                 }
 
@@ -308,6 +304,42 @@ export default {
                         this.form[key] = data[key];
                         console.log(this.form)
                     }
+                    let listMap = {}
+                    let timeMap = {}
+                    listMap = data.music_id.split(',').map(id => {
+                        return +id;
+                    })
+                    timeMap = data.game_time.split(',').map(id => {
+                        return +id;
+                    })
+                    for (const key in this.form) {
+                        this.form[key] = data[key];
+                    }
+                    for (var i = 0; i<this.value.length; i++) {
+                        var flag = this.functiontofindIndexByKeyValue(this.value[i])
+                        if(flag!==-1) {
+                            this.idData[flag].music_id = listMap[flag]
+                            this.idData[flag].game_id = this.value[flag]
+                            this.idData[flag].game_time = timeMap[flag]
+                        } else {
+                            let idData = {};
+                            idData = {
+                                'game_id': this.value[i],
+                                'music_id': listMap[i],
+                                'game_time': timeMap[i],
+                            }
+                            this.idData.push(idData);
+                        }
+                        var result = {}
+                        var time = {}
+                        for (var key in this.value) {
+                            result[this.value[key]] = listMap[key];
+                            time[this.value[key]] = timeMap[key];
+                        }
+                        this.listMap = result
+                        this.timeMap = time
+
+                    }
                     this.value_ids = data.game_ids
                 }
             })
@@ -315,12 +347,10 @@ export default {
         onSubmit(formName) {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
-                    this.form.game_info = this.value.map(item => {
-                        console.log(this.idData[item])
-                        return this.idData[item]
-                    })
+                    this.form.game_info = this.idData
                     this.$axios.post(this.submitUrl, this.$qs.stringify(this.form)).then(res => {
                         if (res.data.code === 1) {
+                            console.log('this.value',this.value)
                             this.backPage()
                         }
                     })
